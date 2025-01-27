@@ -1,0 +1,144 @@
+:root {
+  --quickFade-time: 2s;
+  --fade-time: 2.5s;
+  --blur-time: 2.5s;
+  --blur-amount: 0.188em;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Varela Round;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-image: url('../img/background.png');
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  font-size: 48px;
+  color: white;
+  margin-bottom: 48px;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#image {
+  width: 512px;
+  height: 512px;
+}
+
+#file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 512px;
+  height: 512px;
+  cursor: pointer;
+}
+
+span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #0E4294;
+  border-radius: 16px;
+  width: 512px;
+  height: 512px;
+}
+
+span i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 75px;
+  color: white;
+}
+
+span p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-size: 36px;
+  color: white;
+}
+
+#button {
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px 20px 10px 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #0E4294;
+  border: none;
+  color: white;
+  transition: 0.2s;
+}
+
+#button:hover {
+  background-color: #245aaf;
+}
+
+.dust {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  filter: blur(.05em);
+}
+
+.quickFade{
+  animation: fadeout var(--quickFade-time) linear forwards;
+}
+
+.fade {
+  animation: fadeout var(--fade-time) linear forwards;
+}
+
+@keyframes fadeout {
+  0% { opacity: 1}
+  100% { opacity: 0; }
+}
+
+.blur {
+  animation: fadeblur var(--blur-time) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeblur {
+  0% { 
+    opacity: 1;
+    filter: blur(0.05em);
+  }
+  80% {
+    filter: blur(var(--blur-amount));
+    opacity: 0.2;
+  }
+  100% { 
+    opacity: 0;
+    filter: blur(calc(var(--blur-amount) * 1.5));
+  }
+}
