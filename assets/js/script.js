@@ -70,9 +70,9 @@ const captureFrame = () => {
   const elements = document.querySelectorAll('.dust, #image-container img');
   elements.forEach(el => {
       if (el.style.display !== 'none') {
-          const x = (canvas.width - el.width) / 2;
-          const y = (canvas.height - el.height) / 2;
-          ctx.drawImage(el, x, y, el.width, el.height);
+        const x = (canvas.width - el.width) / 2;
+        const y = (canvas.height - el.height) / 2;
+        ctx.drawImage(el, x, y, el.width, el.height);
       }
   });
 
